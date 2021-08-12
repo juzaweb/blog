@@ -14,15 +14,21 @@
 
 namespace Juzaweb\Blog;
 
+use Illuminate\Support\Facades\Route;
+
 class Blog
 {
+    protected static $namespace = 'Juzaweb\Blog\Http\Controllers';
+
     public static function adminRoutes()
     {
-        require (__DIR__ . '/routes/admin.php');
+        Route::namespace(self::$namespace)
+            ->group(__DIR__ . '/routes/admin.php');
     }
 
     public static function themeRoutes()
     {
-        require (__DIR__ . '/routes/theme.php');
+        Route::namespace(self::$namespace)
+            ->group(__DIR__ . '/routes/theme.php');
     }
 }
