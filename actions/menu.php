@@ -1,10 +1,12 @@
 <?php
 
+use Juzaweb\Blog\Models\Page;
+use Juzaweb\Blog\Models\Post;
 use Juzaweb\Core\Facades\HookAction;
 
 HookAction::registerPostType('posts', [
     'label' => trans('juzaweb::app.posts'),
-    'model' => \Juzaweb\Blog\Models\Post::class,
+    'model' => Post::class,
     'menu_icon' => 'fa fa-edit',
     'menu_position' => 15,
     'supports' => ['category', 'tag'],
@@ -12,7 +14,7 @@ HookAction::registerPostType('posts', [
 
 HookAction::registerPostType('pages', [
     'label' => trans('juzaweb::app.pages'),
-    'model' => \Juzaweb\Blog\Models\Page::class,
+    'model' => Page::class,
     'menu_icon' => 'fa fa-edit',
     'menu_position' => 15,
     'supports' => [],

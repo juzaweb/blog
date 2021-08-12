@@ -1,6 +1,8 @@
 <?php
 
-namespace Mymo\Frontend\Controllers;
+namespace Juzaweb\Blog\Http\Controllers;
+
+use Juzaweb\Theme\Http\Controllers\FrontendController;
 
 class PostController extends FrontendController
 {

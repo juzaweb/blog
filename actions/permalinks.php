@@ -8,19 +8,15 @@
  * @license    MIT
  *
  * Created by The Anh.
- * Date: 8/11/2021
- * Time: 12:04 PM
+ * Date: 8/12/2021
+ * Time: 5:47 PM
  */
 
-namespace Juzaweb\Blog\Providers;
-
-use Illuminate\Support\ServiceProvider;
 use Juzaweb\Core\Facades\HookAction;
+use Juzaweb\Blog\Http\Controllers\PostController;
 
-class BlogServiceProvider extends ServiceProvider
-{
-    public function boot()
-    {
-        HookAction::loadActionForm(__DIR__ . '/../../actions');
-    }
-}
+HookAction::registerPermalink('page', [
+    'label' => trans('juzaweb::app.news'),
+    'base' => 'news',
+    'callback' => PostController::class,
+]);
