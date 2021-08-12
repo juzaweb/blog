@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Juzaweb\Core\Http\Controllers\BackendController;
 use Juzaweb\Core\Traits\ResourceController;
-use Juzaweb\Core\Models\Comment;
+use Juzaweb\Blog\Models\Comment;
 
 class CommentController extends BackendController
 {

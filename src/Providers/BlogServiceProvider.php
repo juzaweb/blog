@@ -12,14 +12,15 @@
  * Time: 12:04 PM
  */
 
-namespace Juzaweb\Blog;
+namespace Juzaweb\Blog\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Juzaweb\Core\Facades\HookAction;
 
 class BlogServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-
+        HookAction::loadActionForm(__DIR__ . '/../actions');
     }
 }

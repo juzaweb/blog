@@ -20,7 +20,7 @@
     "extra": {
       "laravel": {
         "providers": [
-          "Juzaweb\\Blog\\BlogServiceProvider"
+          "Juzaweb\\Blog\\Providers\\BlogServiceProvider"
         ]
       }
     }

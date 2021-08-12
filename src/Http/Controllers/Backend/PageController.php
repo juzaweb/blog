@@ -1,11 +1,11 @@
 <?php
 
-namespace Juzaweb\Core\Http\Controllers\Backend;
+namespace Juzaweb\Blog\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Juzaweb\Core\Http\Controllers\BackendController;
-use Juzaweb\Core\Models\Page;
+use Juzaweb\Blog\Models\Page;
 
 class PageController extends BackendController
 {

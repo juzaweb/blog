@@ -12,12 +12,5 @@
  * Time: 12:06 PM
  */
 
-$adminPrefix = config('juzaweb.admin_prefix', 'admin-cp');
-
-Route::group([
-    'prefix' => $adminPrefix,
-    'middleware' => ['admin']
-], function () {
-    require __DIR__ . '/components/page.route.php';
-    require __DIR__ . '/components/post.route.php';
-});
+require __DIR__ . '/components/page.route.php';
+require __DIR__ . '/components/post.route.php';

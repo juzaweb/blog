@@ -1,12 +1,10 @@
 <?php
 
-namespace Juzaweb\Core\Http\Controllers\Backend;
+namespace Juzaweb\Blog\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Juzaweb\Core\Http\Controllers\BackendController;
 use Juzaweb\Core\Services\PostService;
-use Juzaweb\Core;
-use Juzaweb\Core\Repositories\PostRepository;
 
 class PostController extends BackendController
 {
