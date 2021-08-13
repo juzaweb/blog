@@ -12,7 +12,7 @@
  * Time: 12:08 PM
  */
 
-Route::postTypeResource('posts', 'Backend\PostController');
+Route::postTypeResource('posts', 'PostController');
 
-Route::juzawebResource('comments', 'Backend\CommentController');
+Route::jwResource('comments', 'CommentController');
 

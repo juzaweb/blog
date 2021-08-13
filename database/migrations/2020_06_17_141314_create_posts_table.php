@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
             $table->string('thumbnail', 250)->nullable();
             $table->string('slug', 150)->unique()->index();
             $table->longText('content')->nullable();
-            $table->string('status', 50)->default('draft');
+            $table->string('status', 50)->index()->default('draft');
             $table->bigInteger('views')->default(0);
             $table->timestamps();
         });

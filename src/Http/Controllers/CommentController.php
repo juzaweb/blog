@@ -1,7 +1,8 @@
 <?php
 
-namespace Juzaweb\Core\Http\Controllers\Backend;
+namespace Juzaweb\Blog\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Juzaweb\Core\Http\Controllers\BackendController;
@@ -12,7 +13,7 @@ class CommentController extends BackendController
 {
     use ResourceController;
 
-    protected $viewPrefix = 'juzaweb::backend.comment';
+    protected $viewPrefix = 'jw_blog::comment';
 
     protected function validator(array $attributes)
     {
@@ -50,7 +51,7 @@ class CommentController extends BackendController
         $query = Comment::query()->with(['user', 'postType']);
 
         if ($search) {
-            $query->where(function ($q) use ($search) {
+            $query->where(function (Builder $q) use ($search) {
                 $q->orWhere('name', 'like', '%'. $search .'%');
                 $q->orWhere('content', 'like', '%'. $search .'%');
             });

@@ -8,7 +8,6 @@
         <div class="col-md-6">
             <div class="btn-group float-right">
                 <a href="{{ route('admin.posts.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> @lang('juzaweb::app.add_new')</a>
-                <button type="button" class="btn btn-danger" id="delete-item"><i class="fa fa-trash"></i> @lang('juzaweb::app.delete')</button>
             </div>
         </div>
     </div>
