@@ -12,5 +12,5 @@
  * Time: 12:06 PM
  */
 
-require __DIR__ . '/components/page.route.php';
+
 require __DIR__ . '/components/post.route.php';

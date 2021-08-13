@@ -1,6 +1,5 @@
 <?php
 
-use Juzaweb\Blog\Models\Page;
 use Juzaweb\Blog\Models\Post;
 use Juzaweb\Core\Facades\HookAction;
 
@@ -10,14 +9,6 @@ HookAction::registerPostType('posts', [
     'menu_icon' => 'fa fa-edit',
     'menu_position' => 15,
     'supports' => ['category', 'tag'],
-]);
-
-HookAction::registerPostType('pages', [
-    'label' => trans('juzaweb::app.pages'),
-    'model' => Page::class,
-    'menu_icon' => 'fa fa-edit',
-    'menu_position' => 15,
-    'supports' => [],
 ]);
 
 HookAction::addAdminMenu(
