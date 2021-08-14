@@ -134,16 +134,16 @@ class PostController extends BackendController
 
         switch ($action) {
             case 'delete':
-                Post::delete($ids);
+                Post::whereIn('id', $ids)
+                    ->delete();
                 break;
             case 'public':
             case 'private':
             case 'draft':
-                foreach ($ids as $id) {
-                    $this->postService->update([
+                Post::whereIn('id', $ids)
+                    ->update([
                         'status' => $action
-                    ], $id);
-                }
+                    ]);
                 break;
         }
 
