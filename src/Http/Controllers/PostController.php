@@ -103,8 +103,9 @@ class PostController extends BackendController
     
     public function store(Request $request)
     {
-        Post::create($request->all());
-        
+        $model = Post::create($request->all());
+        PostType::syncTaxonomies('posts', $model, $request->all());
+
         return $this->success([
             'message' => trans('juzaweb::app.saved_successfully'),
             'redirect' => route('admin.posts.index')
@@ -116,6 +117,7 @@ class PostController extends BackendController
         $model = Post::findOrFail($id);
 
         $model->update($request->all());
+        PostType::syncTaxonomies('posts', $model, $request->all());
 
         return $this->success([
             'message' => trans('juzaweb::app.saved_successfully')
