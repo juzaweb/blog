@@ -4,7 +4,7 @@ namespace Juzaweb\Blog\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Juzaweb\Core\Models\User;
-use Juzaweb\Core\Support\PostType;
+use Juzaweb\Core\Facades\PostType;
 
 /**
  * Juzaweb\Blog\Models\Comment
