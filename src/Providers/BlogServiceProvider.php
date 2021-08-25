@@ -22,6 +22,8 @@ class BlogServiceProvider extends ServiceProvider
     public function boot()
     {
         HookAction::loadActionForm(__DIR__ . '/../../actions');
+
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
         $this->loadViewsFrom(__DIR__ . '/../views', 'jw_blog');
     }
 }
