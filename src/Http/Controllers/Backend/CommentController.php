@@ -1,6 +1,6 @@
 <?php
 
-namespace Juzaweb\Blog\Http\Controllers;
+namespace Juzaweb\Blog\Http\Controllers\Backend;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

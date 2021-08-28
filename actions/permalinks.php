@@ -15,8 +15,8 @@
 use Juzaweb\Core\Facades\HookAction;
 use Juzaweb\Blog\Http\Controllers\PostController;
 
-HookAction::registerPermalink('page', [
+HookAction::registerPermalink('post', [
     'label' => trans('juzaweb::app.news'),
-    'base' => 'news',
+    'base' => 'post',
     'callback' => PostController::class,
 ]);

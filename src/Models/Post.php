@@ -2,8 +2,7 @@
 
 namespace Juzaweb\Blog\Models;
 
-use Juzaweb\Core\Traits\UseSlug;
-use Juzaweb\Core\Traits\UseThumbnail;
+use Juzaweb\Core\Traits\PostTypeModel;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -38,7 +37,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Post extends Model
 {
-    use UseThumbnail, UseSlug;
+    use PostTypeModel;
     
     protected $table = 'posts';
     protected $fillable = [
