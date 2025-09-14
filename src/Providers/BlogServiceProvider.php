@@ -14,6 +14,12 @@ class BlogServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+
+        $this->booted(
+            function () {
+                $this->registerMenus();
+            }
+        );
     }
 
     /**
@@ -28,6 +34,11 @@ class BlogServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
         $this->app->register(RouteServiceProvider::class);
+    }
+
+    protected function registerMenus(): void
+    {
+        //
     }
 
     /**
