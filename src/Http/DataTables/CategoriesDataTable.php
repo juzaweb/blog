@@ -23,7 +23,9 @@ class CategoriesDataTable extends DataTable
 
     public function query(Category $model): QueryBuilder
     {
-        return $model->newQuery()->filter(request()->all());
+        return $model->newQuery()
+            ->withTranslation()
+            ->filter(request()->all());
     }
 
     public function getColumns(): array
@@ -50,7 +52,6 @@ class CategoriesDataTable extends DataTable
             Action::edit(admin_url("post-categories/{$model->id}/edit"))
                 ->can('post-categories.edit'),
             Action::delete()
-                ->disabled($model->isSuperAdmin())
                 ->can('post-categories.delete'),
         ];
     }
