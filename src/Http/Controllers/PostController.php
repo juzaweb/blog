@@ -85,4 +85,25 @@ class PostController extends AdminController
             ]
         );
     }
+
+    public function update(PostRequest $request, string $id)
+    {
+        $data = $request->validated();
+        $post = Post::findOrFail($id);
+
+        DB::transaction(
+            function () use ($post, $data) {
+                $post->update($data);
+                $post->categories()->sync($data['categories'] ?? []);
+                return $post;
+            }
+        );
+
+        return $this->success(
+            [
+                'message' => __('Post updated successfully.'),
+                'redirect' => action([self::class, 'index']),
+            ]
+        );
+    }
 }

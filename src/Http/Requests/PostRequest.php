@@ -22,6 +22,7 @@ class PostRequest extends FormRequest
 			"{$locale}.title" => ['required', 'string', 'max:255'],
             "{$locale}.content" => ['nullable', 'string', 'max:255'],
             "{$locale}.slug" => ['nullable', 'string', 'max:255'],
+            "{$locale}.thumbnail" => ['nullable', 'string', 'max:255'],
             'categories' => ['nullable', 'array', AllExist::make('post_categories','id')],
 		];
     }

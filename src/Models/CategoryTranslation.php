@@ -6,11 +6,12 @@ use Juzaweb\Core\Models\Model;
 use Juzaweb\Core\Traits\HasAPI;
 use Juzaweb\Core\Traits\HasSeoMeta;
 use Juzaweb\Core\Traits\HasSlug;
+use Juzaweb\Core\Traits\HasThumbnail;
 use Juzaweb\FileManager\Traits\HasMedia;
 
 class CategoryTranslation extends Model
 {
-    use HasAPI, HasSlug, HasSeoMeta, HasMedia;
+    use HasAPI, HasSlug, HasSeoMeta, HasMedia, HasThumbnail;
 
     protected $table = 'post_category_translations';
 
@@ -28,16 +29,6 @@ class CategoryTranslation extends Model
     ];
     
     public $mediaChannels = ['thumbnail'];
-
-    public function getThumbnailAttribute(): ?string
-    {
-        return $this->getFirstMediaUrl('thumbnail');
-    }
-
-    public function setThumbnailAttribute($value): void
-    {
-        $this->mediaAttributes['thumbnail'] = $value;
-    }
 
     public function seoMetaFill(): array
     {

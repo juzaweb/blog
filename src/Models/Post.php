@@ -27,6 +27,7 @@ class Post extends Model implements TranslatableContract
         'content',
         'slug',
         'locale',
+        'thumbnail',
     ];
 
     public function categories()
