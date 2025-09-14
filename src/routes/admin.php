@@ -10,3 +10,10 @@
 | contains the "admin" middleware group. Now create something great!
 |
 */
+
+use Juzaweb\Core\Facades\RouteResource;
+use Juzaweb\Modules\Blog\Http\Controllers\CategoryController;
+use Juzaweb\Modules\Blog\Http\Controllers\PostController;
+
+RouteResource::admin('posts', PostController::class);
+RouteResource::admin('post-categories', CategoryController::class);

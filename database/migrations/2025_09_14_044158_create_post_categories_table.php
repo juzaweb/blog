@@ -27,6 +27,7 @@ return new class extends Migration
         Schema::create('post_category_translations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description')->nullable();
             $table->string('slug', 190)->unique();
             $table->string('locale')->index();
             $table->uuid('post_category_id');

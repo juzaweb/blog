@@ -2,6 +2,7 @@
 
 namespace Juzaweb\Modules\Blog\Providers;
 
+use Juzaweb\Core\Facades\Menu;
 use Juzaweb\Core\Providers\ServiceProvider;
 
 class BlogServiceProvider extends ServiceProvider
@@ -38,7 +39,14 @@ class BlogServiceProvider extends ServiceProvider
 
     protected function registerMenus(): void
     {
-        //
+        Menu::make('blog', __('Blog'))
+            ->icon('fas fa-newspaper');
+
+        Menu::make('posts', __('Posts'))
+            ->parent('blog');
+
+        Menu::make('post-categories', __('Categories'))
+            ->parent('blog');
     }
 
     /**
@@ -74,7 +82,7 @@ class BlogServiceProvider extends ServiceProvider
     {
         $viewPath = resource_path('views/modules/blog');
 
-        $sourcePath = __DIR__ . '/../src/resources/views';
+        $sourcePath = __DIR__ . '/../resources/views';
 
         $this->publishes([
             $sourcePath => $viewPath
