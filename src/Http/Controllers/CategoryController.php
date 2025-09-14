@@ -3,6 +3,7 @@
 namespace Juzaweb\Modules\Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Juzaweb\Core\Facades\Breadcrumb;
 use Juzaweb\Core\Http\Controllers\AdminController;
 use Juzaweb\Modules\Blog\Http\DataTables\CategoriesDataTable;
@@ -24,7 +25,7 @@ class CategoryController extends AdminController
 
         Breadcrumb::add(__('Create new Category'));
 
-        $parentCategories = Category::all();
+        $parentCategories = Category::withTranslationAndMedia()->get();
         $locale = $this->getFormLanguage();
 
         return view(
@@ -46,7 +47,9 @@ class CategoryController extends AdminController
 
         Breadcrumb::add(__('Edit Category :name', ['name' => $model->name]));
 
-        $parentCategories = Category::where('id', '!=', $id)->get();
+        $parentCategories = Category::withTranslationAndMedia()
+            ->where('id', '!=', $id)
+            ->get();
         $locale = $this->getFormLanguage();
 
         return view(
@@ -64,7 +67,7 @@ class CategoryController extends AdminController
     {
         $data = $request->validated();
 
-        $category = Category::create($data);
+        $category = DB::transaction(fn () => Category::create($data));
 
         return $this->success(
             [
@@ -77,9 +80,9 @@ class CategoryController extends AdminController
     public function update(CategoryRequest $request, string $id)
     {
         $data = $request->validated();
-
         $category = Category::findOrFail($id);
-        $category->update($data);
+
+        DB::transaction(fn () => $category->update($data));
 
         return $this->success(
             [

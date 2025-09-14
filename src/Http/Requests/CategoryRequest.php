@@ -22,6 +22,7 @@ class CategoryRequest extends FormRequest
             "{$locale}.description" => ['nullable', 'string', 'max:255'],
             "{$locale}.slug" => ['nullable', 'string', 'max:255'],
             'parent_id' => ['nullable', 'exists:post_categories,id'],
+            "{$locale}.thumbnail" => ['nullable', 'string', 'max:255'],
 		];
     }
 }

@@ -42,6 +42,7 @@
                     <div class="card-body">
                         {{ Field::select($model, 'categories[]', ['label' => __('Categoties')])
                            ->multiple()
+                           ->selected($model->categories->pluck('id')->toArray())
                            ->dropDownList(
                                [
                                    ...$categories->pluck('name', 'id')->toArray(),

@@ -24,5 +24,6 @@ class Category extends Model implements TranslatableContract
         'name',
         'description',
         'slug',
+        'thumbnail',
     ];
 }

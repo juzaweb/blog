@@ -24,7 +24,7 @@ class CategoriesDataTable extends DataTable
     public function query(Category $model): QueryBuilder
     {
         return $model->newQuery()
-            ->withTranslation()
+            ->withTranslationAndMedia()
             ->filter(request()->all());
     }
 
