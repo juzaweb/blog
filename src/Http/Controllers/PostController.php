@@ -65,11 +65,17 @@ class PostController extends AdminController
 
     public function store(PostRequest $request)
     {
+        $locale = $this->getFormLanguage();
+
         DB::transaction(
-            function () use ($request) {
+            function () use ($request, $locale) {
                 $post = Post::create($request->validated());
                 if ($request->has('categories')) {
                     $post->categories()->sync($request->input('categories', []));
+                }
+
+                if ($thumbnail = $request->input('thumbnail')) {
+                    $post->translate($locale)?->attachMedia($thumbnail, 'thumbnail');
                 }
 
                 return $post;
