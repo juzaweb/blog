@@ -65,13 +65,11 @@ class PostController extends AdminController
 
     public function store(PostRequest $request)
     {
-        $data = $request->validated();
-
         DB::transaction(
-            function () use ($data) {
-                $post = Post::create($data);
-                if (isset($data['categories'])) {
-                    $post->categories()->sync($data['categories']);
+            function () use ($request) {
+                $post = Post::create($request->validated());
+                if ($request->has('categories')) {
+                    $post->categories()->sync($request->input('categories', []));
                 }
 
                 return $post;
@@ -88,13 +86,20 @@ class PostController extends AdminController
 
     public function update(PostRequest $request, string $id)
     {
-        $data = $request->validated();
         $post = Post::findOrFail($id);
+        $locale = $this->getFormLanguage();
 
         DB::transaction(
-            function () use ($post, $data) {
-                $post->update($data);
-                $post->categories()->sync($data['categories'] ?? []);
+            function () use ($post, $request, $locale) {
+                $post->update($request->validated());
+                $post->categories()->sync($request->input('categories', []));
+
+                if ($thumbnail = $request->input('thumbnail')) {
+                    $post->translate($locale)?->attachMedia($thumbnail, 'thumbnail');
+                } elseif ($request->has('thumbnail')) {
+                    $post->translate($locale)?->detachMedia('thumbnail');
+                }
+
                 return $post;
             }
         );

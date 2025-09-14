@@ -6,12 +6,11 @@ use Juzaweb\Core\Models\Model;
 use Juzaweb\Core\Traits\HasAPI;
 use Juzaweb\Core\Traits\HasSeoMeta;
 use Juzaweb\Core\Traits\HasSlug;
-use Juzaweb\Core\Traits\HasThumbnail;
 use Juzaweb\FileManager\Traits\HasMedia;
 
 class PostTranslation extends Model
 {
-    use HasAPI, HasSlug, HasSeoMeta, HasMedia, HasThumbnail;
+    use HasAPI, HasSlug, HasSeoMeta, HasMedia;
 
     protected $table = 'post_translations';
 
@@ -20,7 +19,6 @@ class PostTranslation extends Model
         'content',
         'slug',
         'locale',
-        'thumbnail',
     ];
 
     protected $appends = [
@@ -32,6 +30,11 @@ class PostTranslation extends Model
     public function post()
     {
         return $this->belongsTo(Post::class, 'post_id');
+    }
+
+    public function getThumbnailAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('thumbnail');
     }
 
     public function seoMetaFill(): array

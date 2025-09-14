@@ -53,7 +53,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        {{ Field::image($model, "{$locale}[thumbnail]", ['label' => __('Thumbnail'), 'value' => $model->thumbnail]) }}
+                        {{ Field::image($model, "thumbnail", ['label' => __('Thumbnail'), 'value' => $model->thumbnail]) }}
                     </div>
                 </div>
 
