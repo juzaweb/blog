@@ -1,0 +1,16 @@
+{
+    "name": "juzaweb/blog",
+    "type": "juzaweb-module",
+    "description": "Blog Module",
+    "authors": [
+        {
+            "name": "Juzaweb CMS",
+            "email": "admin@juzaweb.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Juzaweb\\Modules\\Blog\\": "src/"
+        }
+    }
+}
