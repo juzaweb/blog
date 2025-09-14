@@ -2,9 +2,13 @@
 
 namespace Juzaweb\Modules\Blog\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Juzaweb\Core\Facades\Breadcrumb;
 use Juzaweb\Core\Http\Controllers\AdminController;
 use Juzaweb\Modules\Blog\Http\DataTables\PostsDataTable;
+use Juzaweb\Modules\Blog\Http\Requests\PostRequest;
+use Juzaweb\Modules\Blog\Models\Category;
+use Juzaweb\Modules\Blog\Models\Post;
 
 class PostController extends AdminController
 {
@@ -23,15 +27,62 @@ class PostController extends AdminController
 
         Breadcrumb::add(__('Create New Post'));
 
-        return view('blog::post.index');
+        $locale = $this->getFormLanguage();
+        $categories = Category::withTranslation()->get();
+
+        return view(
+            'blog::post.form',
+            [
+                'model' => new Post(),
+                'action' => action([self::class, 'store']),
+                'locale' => $locale,
+                'categories' => $categories,
+            ]
+        );
     }
 
     public function edit(string $id)
     {
+        $model = Post::findOrFail($id);
+
         Breadcrumb::add(__('Blog'), action([self::class, 'index']));
 
-        Breadcrumb::add(__('Edit Post: :name', ['name' => $id]));
+        Breadcrumb::add(__('Edit Post: :name', ['name' => $model->title]));
 
-        return view('blog::post.index');
+        $locale = $this->getFormLanguage();
+        $categories = Category::withTranslation()->get();
+
+        return view(
+            'blog::post.form',
+            [
+                'model' => $model,
+                'action' => action([self::class, 'update'], [$id]),
+                'locale' => $locale,
+                'categories' => $categories,
+            ]
+        );
+    }
+
+    public function store(PostRequest $request)
+    {
+        $data = $request->validated();
+
+        DB::transaction(
+            function () use ($data) {
+                $post = Post::create($data);
+                if (isset($data['categories'])) {
+                    $post->categories()->sync($data['categories']);
+                }
+
+                return $post;
+            }
+        );
+
+        return $this->success(
+            [
+                'message' => __('Post created successfully.'),
+                'redirect' => action([self::class, 'index']),
+            ]
+        );
     }
 }

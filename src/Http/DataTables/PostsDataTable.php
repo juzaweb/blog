@@ -50,7 +50,6 @@ class PostsDataTable extends DataTable
             Action::edit(admin_url("posts/{$model->id}/edit"))
                 ->can('posts.edit'),
             Action::delete()
-                ->disabled($model->isSuperAdmin())
                 ->can('posts.delete'),
         ];
     }
