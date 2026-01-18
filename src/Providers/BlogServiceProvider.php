@@ -31,28 +31,28 @@ class BlogServiceProvider extends ServiceProvider
     {
         Menu::make('blog', function () {
             return [
-                'title' => __('core::translation.blog'),
+                'title' => __('blog::translation.blog'),
                 'icon' => 'fas fa-newspaper',
             ];
         });
 
         Menu::make('posts', function () {
             return [
-                'title' => __('core::translation.posts'),
+                'title' => __('blog::translation.posts'),
                 'parent' => 'blog',
             ];
         });
 
         Menu::make('post-categories', function () {
             return [
-                'title' => __('core::translation.categories'),
+                'title' => __('blog::translation.categories'),
                 'parent' => 'blog',
             ];
         });
 
         Menu::make('comments', function () {
             return [
-                'title' => __('core::translation.comments'),
+                'title' => __('blog::translation.comments'),
                 'parent' => 'blog',
             ];
         });
