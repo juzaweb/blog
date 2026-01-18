@@ -23,7 +23,6 @@ class CategoryTranslation extends Model implements Sitemapable
         'slug',
         'locale',
         'post_category_id',
-        'website_id',
     ];
 
     public function scopeForSitemap(Builder $builder): Builder
