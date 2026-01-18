@@ -4,13 +4,13 @@
     <div class="row">
         <div class="col-md-3">
             @can('post-categories.create')
-                <x-card title="{{ __('core::translation.add_category') }}">
+                <x-card title="{{ __('blog::translation.add_category') }}">
                     <form action="{{ admin_url('post-categories') }}" method="post" class="form-ajax" data-success="quickCreateSuccess" id="quick-create-form">
-                        {{ Field::text(__('core::translation.name'), 'name', ['required' => true]) }}
+                        {{ Field::text(__('blog::translation.name'), 'name', ['required' => true]) }}
 
                         <div class="mt-3">
                             <button type="submit" class="btn btn-primary btn-block">
-                                <i class="fas fa-plus"></i> {{ __('core::translation.add_category') }}
+                                <i class="fas fa-plus"></i> {{ __('blog::translation.add_category') }}
                             </button>
                         </div>
                     </form>
@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-md-9">
-            <x-card title="{{ __('core::translation.categories') }}">
+            <x-card title="{{ __('blog::translation.categories') }}">
                 {{ $dataTable->table() }}
             </x-card>
         </div>

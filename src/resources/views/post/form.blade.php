@@ -26,11 +26,11 @@
         <div class="row">
             <div class="col-md-12">
                 <a href="{{ admin_url('posts') }}" class="btn btn-warning">
-                    <i class="fas fa-arrow-left"></i> {{ __('core::translation.back') }}
+                    <i class="fas fa-arrow-left"></i> {{ __('blog::translation.back') }}
                 </a>
 
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i> {{ __('core::translation.save') }}
+                    <i class="fas fa-save"></i> {{ __('blog::translation.save') }}
                 </button>
             </div>
         </div>
@@ -39,16 +39,16 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">{{ __('core::translation.posts') }}</h3>
+                        <h3 class="card-title">{{ __('blog::translation.posts') }}</h3>
                     </div>
                     <div class="card-body">
-                        {!! Field::text($model, "title", ['label' => __('core::translation.title'), 'value' => $model->title]) !!}
+                        {!! Field::text($model, "title", ['label' => __('blog::translation.title'), 'value' => $model->title]) !!}
 
-                        {!! Field::editor($model, "content", ['label' => __('core::translation.content'), 'value' => $model->content]) !!}
+                        {!! Field::editor($model, "content", ['label' => __('blog::translation.content'), 'value' => $model->content]) !!}
 
-                        {{ Field::tags(__('core::translation.tags'), 'tags[]', ['value' => $model->tags->pluck('id')->toArray()])
+                        {{ Field::tags(__('blog::translation.tags'), 'tags[]', ['value' => $model->tags->pluck('id')->toArray()])
                            ->dataUrl(load_data_url(\Juzaweb\Modules\Core\Models\Tag::class))
-                           ->placeholder(__('core::translation.select_or_add_new_tag'))
+                           ->placeholder(__('blog::translation.select_or_add_new_tag'))
                            ->dropDownList(
                                $model->tags->pluck('name', 'id')->toArray()
                            ) }}
@@ -64,15 +64,15 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">{{ __('core::translation.status') }}</h3>
+                        <h3 class="card-title">{{ __('blog::translation.status') }}</h3>
                     </div>
                     <div class="card-body">
-                        {!! Field::select($model, 'status', ['label' => __('core::translation.status'), 'value' => $model->status?->value])
+                        {!! Field::select($model, 'status', ['label' => __('blog::translation.status'), 'value' => $model->status?->value])
                             ->dropDownList(\Juzaweb\Modules\Core\Enums\PostStatus::all()) !!}
                     </div>
                 </div>
 
-                <x-card title="{{ __('core::translation.categories') }}">
+                <x-card title="{{ __('blog::translation.categories') }}">
                     <div class="scrollable-list">
                         @component('core::components.categories-checkbox', [
                                 'categories' => $categories,
@@ -88,7 +88,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        {{ Field::image(__('core::translation.thumbnail'), 'thumbnail', ['value' => $model->thumbnail]) }}
+                        {{ Field::image(__('blog::translation.thumbnail'), 'thumbnail', ['value' => $model->thumbnail]) }}
                     </div>
                 </div>
 

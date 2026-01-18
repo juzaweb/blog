@@ -17,7 +17,7 @@ class PostController extends AdminController
 {
     public function index(PostsDataTable $dataTable)
     {
-        Breadcrumb::add(__('core::translation.blog'));
+        Breadcrumb::add(__('blog::translation.blog'));
 
         return $dataTable->render(
             'blog::post.index',
@@ -29,9 +29,9 @@ class PostController extends AdminController
 
     public function create()
     {
-        Breadcrumb::add(__('core::translation.blog'), action([self::class, 'index']));
+        Breadcrumb::add(__('blog::translation.blog'), action([self::class, 'index']));
 
-        Breadcrumb::add(__('core::translation.create_new_post'));
+        Breadcrumb::add(__('blog::translation.create_new_post'));
 
         $locale = $this->getFormLanguage();
         $categories = Category::withTranslation()
@@ -56,9 +56,9 @@ class PostController extends AdminController
         $model = Post::findOrFail($id);
         $model->setDefaultLocale($locale);
 
-        Breadcrumb::add(__('core::translation.blog'), action([self::class, 'index']));
+        Breadcrumb::add(__('blog::translation.blog'), action([self::class, 'index']));
 
-        Breadcrumb::add(__('core::translation.edit_post_name', ['name' => $model->title]));
+        Breadcrumb::add(__('blog::translation.edit_post_name', ['name' => $model->title]));
 
         $categories = Category::withTranslation()
             ->with('children')
@@ -98,7 +98,7 @@ class PostController extends AdminController
 
         return $this->success(
             [
-                'message' => __('core::translation.post_created_successfully'),
+                'message' => __('blog::translation.post_created_successfully'),
                 'redirect' => action([self::class, 'index']),
             ]
         );
@@ -130,7 +130,7 @@ class PostController extends AdminController
 
         return $this->success(
             [
-                'message' => __('core::translation.post_updated_successfully'),
+                'message' => __('blog::translation.post_updated_successfully'),
                 'redirect' => action([self::class, 'index']),
             ]
         );
@@ -147,9 +147,9 @@ class PostController extends AdminController
                     ->get()
                     ->each
                     ->delete();
-                return $this->success(__('core::translation.deleted_successfully'));
+                return $this->success(__('blog::translation.deleted_successfully'));
             default:
-                return $this->error(__('core::translation.invalid_action'));
+                return $this->error(__('blog::translation.invalid_action'));
         }
     }
 }

@@ -14,16 +14,16 @@ class CategoryController extends AdminController
 {
     public function index(CategoriesDataTable $dataTable)
     {
-        Breadcrumb::add(__('core::translation.categories'));
+        Breadcrumb::add(__('blog::translation.categories'));
 
         return $dataTable->render('blog::category.index');
     }
 
     public function create()
     {
-        Breadcrumb::add(__('core::translation.categories'), action([self::class, 'index']));
+        Breadcrumb::add(__('blog::translation.categories'), action([self::class, 'index']));
 
-        Breadcrumb::add(__('core::translation.create_new_category'));
+        Breadcrumb::add(__('blog::translation.create_new_category'));
 
         $categories = Category::withTranslation()
             ->with(['children'])
@@ -51,9 +51,9 @@ class CategoryController extends AdminController
         $model = Category::findOrFail($id);
         $model->setDefaultLocale($locale);
 
-        Breadcrumb::add(__('core::translation.categories'), action([self::class, 'index']));
+        Breadcrumb::add(__('blog::translation.categories'), action([self::class, 'index']));
 
-        Breadcrumb::add(__('core::translation.edit_category_name', ['name' => $model->name]));
+        Breadcrumb::add(__('blog::translation.edit_category_name', ['name' => $model->name]));
 
         $categories = Category::withTranslation()
             ->with(['children'])
@@ -89,7 +89,7 @@ class CategoryController extends AdminController
 
         return $this->success(
             [
-                'message' => __('core::translation.category_created_successfully'),
+                'message' => __('blog::translation.category_created_successfully'),
                 // 'redirect' => action([self::class, 'index']),
                 'data' => [
                     'id' => $category->id,
@@ -114,7 +114,7 @@ class CategoryController extends AdminController
 
         return $this->success(
             [
-                'message' => __('core::translation.category_updated_successfully'),
+                'message' => __('blog::translation.category_updated_successfully'),
                 'redirect' => action([self::class, 'index']),
             ]
         );
@@ -134,7 +134,7 @@ class CategoryController extends AdminController
 
         return $this->success(
             [
-                'message' => __('core::translation.category_updated_successfully'),
+                'message' => __('blog::translation.category_updated_successfully'),
             ]
         );
     }
@@ -148,7 +148,7 @@ class CategoryController extends AdminController
 
         return $this->success(
             [
-                'message' => __('core::translation.category_created_successfully'),
+                'message' => __('blog::translation.category_created_successfully'),
                 'data' => [
                     'id' => $category->id,
                     'name' => $category->name,
