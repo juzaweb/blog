@@ -9,12 +9,19 @@
         "php": "^8.2"
     },
     "require-dev": {
-        "juzaweb/core": "dev-master"
+        "juzaweb/core": "dev-master",
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^10.0"
     },
     "autoload": {
         "psr-4": {
             "Juzaweb\\Modules\\Blog\\": "src/",
             "Juzaweb\\Modules\\Blog\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Juzaweb\\Modules\\Blog\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",
