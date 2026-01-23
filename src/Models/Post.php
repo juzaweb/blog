@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Juzaweb\Modules\Admin\Database\Factories\PostFactory;
+use Juzaweb\Modules\Blog\Database\Factories\PostFactory;
 use Juzaweb\Modules\Core\Enums\PostStatus;
 use Juzaweb\Modules\Core\FileManager\Traits\HasMedia;
 use Juzaweb\Modules\Core\Models\Model;
