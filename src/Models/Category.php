@@ -5,7 +5,7 @@ namespace Juzaweb\Modules\Blog\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Juzaweb\Modules\Admin\Database\Factories\CategoryFactory;
+use Juzaweb\Modules\Blog\Database\Factories\CategoryFactory;
 use Juzaweb\Modules\Core\FileManager\Traits\HasMedia;
 use Juzaweb\Modules\Core\Models\Model;
 use Juzaweb\Modules\Core\Support\Traits\MenuBoxable;
