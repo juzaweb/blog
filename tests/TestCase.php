@@ -27,12 +27,13 @@ abstract class TestCase extends Orchestra
         $factoryPath = __DIR__ . '/../database/factories/UserFactory.php';
         if (file_exists($factoryPath)) {
             require_once $factoryPath;
-            if (!class_exists('Juzaweb\\Modules\\Admin\\Database\\Factories\\UserFactory')) {
-                class_alias(
-                    'Juzaweb\\Modules\\Core\\Database\\Factories\\UserFactory',
-                    'Juzaweb\\Modules\\Admin\\Database\\Factories\\UserFactory'
-                );
-            }
+        }
+
+        if (!class_exists('Juzaweb\\Modules\\Admin\\Database\\Factories\\UserFactory')) {
+            class_alias(
+                'Juzaweb\\Modules\\Core\\Database\\Factories\\UserFactory',
+                'Juzaweb\\Modules\\Admin\\Database\\Factories\\UserFactory'
+            );
         }
 
         // Load and alias UserStatus enum
@@ -90,6 +91,7 @@ abstract class TestCase extends Orchestra
     {
         return [
             CoreServiceProvider::class,
+            \Juzaweb\Modules\Blog\Providers\BlogServiceProvider::class,
             \Juzaweb\QueryCache\QueryCacheServiceProvider::class,
             \Spatie\Activitylog\ActivitylogServiceProvider::class,
             \Juzaweb\Hooks\HooksServiceProvider::class,
@@ -99,7 +101,6 @@ abstract class TestCase extends Orchestra
             \Yajra\DataTables\DataTablesServiceProvider::class,
             \Yajra\DataTables\ButtonsServiceProvider::class,
             \Yajra\DataTables\HtmlServiceProvider::class,
-            \Juzaweb\Modules\Blog\Providers\BlogServiceProvider::class,
         ];
     }
 
@@ -172,6 +173,8 @@ abstract class TestCase extends Orchestra
             'root' => storage_path('app/private'),
         ]);
 
+        $app['config']->set('app.locale', 'en');
+        $app['config']->set('translatable.fallback_locale', 'en');
         $app['config']->set('auth.providers.users.model', \Juzaweb\Modules\Core\Models\User::class);
     }
 
