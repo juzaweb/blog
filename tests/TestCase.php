@@ -57,9 +57,12 @@ abstract class TestCase extends Orchestra
         if (!is_dir($path)) {
             mkdir($path, 0777, true);
         }
-        if (!file_exists($path . '/mix-manifest.json')) {
-            file_put_contents($path . '/mix-manifest.json', '{}');
-        }
+        file_put_contents($path . '/mix-manifest.json', json_encode([
+            '/js/admin.min.js' => '/js/admin.min.js',
+            '/css/admin.min.css' => '/css/admin.min.css',
+            '/css/vendor.min.css' => '/css/vendor.min.css',
+            '/js/vendor.min.js' => '/js/vendor.min.js',
+        ]));
     }
 
     protected function createDummyTheme(): void
