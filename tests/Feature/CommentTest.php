@@ -36,6 +36,36 @@ class CommentTest extends TestCase
         $response->assertSee('Comments'); // Check title
     }
 
+    public function test_regular_user_cannot_access_comments_index()
+    {
+        $user = new User();
+        $user->forceFill([
+            'name' => 'User',
+            'email' => 'user@example.com',
+            'password' => Hash::make('password'),
+            'is_super_admin' => 0,
+            'email_verified_at' => now(),
+        ]);
+        $user->save();
+
+        $response = $this->actingAs($user)
+            ->get('admin/comments');
+
+        $response->assertStatus(403);
+    }
+
+    public function test_bulk_actions_are_visible()
+    {
+        $response = $this->actingAs($this->admin)
+            ->get('admin/comments');
+
+        $response->assertStatus(200);
+        $response->assertSee('Bulk Actions');
+        $response->assertSee('Approve');
+        $response->assertSee('Reject');
+        $response->assertSee('Delete');
+    }
+
     public function test_cannot_access_create_page()
     {
         $response = $this->actingAs($this->admin)
