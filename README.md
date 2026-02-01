@@ -1,5 +1,3 @@
-# Juzaweb CMS Blog Module
-
 Juzaweb CMS Blog module.
 
 ## Requirements
