@@ -4,3 +4,4 @@ phpunit.xml.bak
 .phpunit.result.cache
 storage/
 composer.lock
+node_modules/
