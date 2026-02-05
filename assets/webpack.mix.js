@@ -11,12 +11,15 @@ mix.options({
     terser: {extractComments: false}
 });
 
-mix.setPublicPath(`public/modules/$LOWER_NAME$`);
+const baseAsset = path.relative(process.cwd(), __dirname);
+const basePublish = baseAsset + '/public';
+
+mix.setPublicPath(basePublish);
 
 mix.styles([
     //
-], 'public/modules/$LOWER_NAME$/css/main.min.css');
+], `${basePublish}/css/main.min.css`);
 
 mix.combine([
     //
-], 'public/modules/$LOWER_NAME$/js/main.min.js');
+], `${basePublish}/js/main.min.js`);
