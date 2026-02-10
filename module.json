@@ -1,6 +1,7 @@
 {
     "name": "Blog",
     "alias": "blog",
+    "title": "Blog",
     "description": "",
     "keywords": [],
     "priority": 0,
