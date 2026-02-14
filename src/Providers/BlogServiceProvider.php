@@ -2,10 +2,12 @@
 
 namespace Juzaweb\Modules\Blog\Providers;
 
+use Juzaweb\Modules\Blog\Models\Category;
 use Juzaweb\Modules\Blog\Models\CategoryTranslation;
 use Juzaweb\Modules\Blog\Models\PostTranslation;
 use Juzaweb\Modules\Core\Contracts\Sitemap;
 use Juzaweb\Modules\Core\Facades\Menu;
+use Juzaweb\Modules\Core\Facades\MenuBox;
 use Juzaweb\Modules\Core\Providers\ServiceProvider;
 
 class BlogServiceProvider extends ServiceProvider
@@ -54,6 +56,15 @@ class BlogServiceProvider extends ServiceProvider
             return [
                 'title' => __('blog::translation.comments'),
                 'parent' => 'blog',
+            ];
+        });
+
+        MenuBox::make('post-categories', Category::class, function () {
+            return [
+                'label' => __('core::translation.categories'),
+                'icon' => 'fas fa-newspaper',
+                'priority' => 1,
+                'field' => 'name',
             ];
         });
     }
