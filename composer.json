@@ -9,10 +9,11 @@
         "php": "^8.2"
     },
     "require-dev": {
-        "orchestra/testbench": "^8.0|^9.0",
-        "phpunit/phpunit": "^10.0",
+        "juzaweb/core": "^5.0",
+        "juzaweb/dev-tool": "dev-master",
         "laravel/framework": "^11.0",
-        "juzaweb/core": "^5.0"
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^10.0"
     },
     "autoload": {
         "psr-4": {
